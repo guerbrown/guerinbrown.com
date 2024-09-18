@@ -7,26 +7,19 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         #game-container {
-            width: 800px;
-            height: 600px;
+            width: 600px;
+            height: 400px;
             margin: 20px auto;
             border: 2px solid black;
-            position: relative;
-            overflow: hidden;
-            background-image: url('BAGES/assets/Bur-oak_crop.jpg');
-            background-size: cover;
+            background-color: #f0f0f0;
         }
-        #gall {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            background-image: url('BAGES/assets/gall_2.png');
-            background-size: cover;
-        }
-        #score {
-            font-size: 24px;
+        #game-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 18px;
             text-align: center;
-            margin-top: 10px;
         }
     </style>
 </head>
@@ -44,44 +37,13 @@
     </header>
     <main>
         <h2>Biologically Accurate Gall Ecology Simulator</h2>
-        <p>Welcome to BAGES, a simple and fun minigame about gall ecology!</p>
+        <h3>Featuring Danny Dorrito and Civil War Cannons</h3>
         <div id="game-container">
-            <div id="gall"></div>
+            <div id="game-placeholder">
+                Game window placeholder.<br>
+                The actual game will be implemented here.
+            </div>
         </div>
-        <div id="score">Score: 0</div>
-        <p>Click on the gall as many times as you can in 30 seconds!</p>
     </main>
-
-    <script>
-        const gall = document.getElementById('gall');
-        const gameContainer = document.getElementById('game-container');
-        const scoreDisplay = document.getElementById('score');
-        let score = 0;
-        let timeLeft = 30;
-
-        function randomPosition() {
-            const maxX = gameContainer.clientWidth - gall.clientWidth;
-            const maxY = gameContainer.clientHeight - gall.clientHeight;
-            gall.style.left = Math.floor(Math.random() * maxX) + 'px';
-            gall.style.top = Math.floor(Math.random() * maxY) + 'px';
-        }
-
-        gall.addEventListener('click', () => {
-            score++;
-            scoreDisplay.textContent = `Score: ${score}`;
-            randomPosition();
-        });
-
-        randomPosition();
-
-        const timer = setInterval(() => {
-            timeLeft--;
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                alert(`Game over! Your score is ${score}`);
-                gall.style.display = 'none';
-            }
-        }, 1000);
-    </script>
 </body>
 </html>
