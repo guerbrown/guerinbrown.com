@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BAGES - Guerin Brown</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        #game-container {
+            width: 800px;
+            height: 600px;
+            margin: 20px auto;
+            border: 2px solid black;
+            position: relative;
+            overflow: hidden;
+            background-image: url('BAGES/assets/Bur-oak_crop.jpg');
+            background-size: cover;
+        }
+        #gall {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-image: url('BAGES/assets/gall_2.png');
+            background-size: cover;
+        }
+        #score {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -20,15 +44,44 @@
     </header>
     <main>
         <h2>Biologically Accurate Gall Ecology Simulator</h2>
-        <p>BAGES (Biologically Accurate Gall Ecology Simulator) is a specialized application for simulating gall ecology.</p>
-        <p>Due to GitHub Pages restrictions, we cannot host the executable file directly. However, you can access BAGES through the following methods:</p>
-        <ul>
-            <li>Download: Contact me directly to obtain a copy of the BAGES application.</li>
-            <li>Online Demo: (Coming Soon) We're working on an online version of BAGES for easy access.</li>
-        </ul>
-        <h3>About BAGES</h3>
-        <p>BAGES is designed to provide accurate simulations of gall ecology, offering insights into this fascinating aspect of biology. It's a valuable tool for researchers, students, and enthusiasts in the field of integrated biology.</p>
-        <img src="BAGES/assets/icon.jpg" alt="BAGES Icon" style="max-width: 200px;">
+        <p>Welcome to BAGES, a simple and fun minigame about gall ecology!</p>
+        <div id="game-container">
+            <div id="gall"></div>
+        </div>
+        <div id="score">Score: 0</div>
+        <p>Click on the gall as many times as you can in 30 seconds!</p>
     </main>
+
+    <script>
+        const gall = document.getElementById('gall');
+        const gameContainer = document.getElementById('game-container');
+        const scoreDisplay = document.getElementById('score');
+        let score = 0;
+        let timeLeft = 30;
+
+        function randomPosition() {
+            const maxX = gameContainer.clientWidth - gall.clientWidth;
+            const maxY = gameContainer.clientHeight - gall.clientHeight;
+            gall.style.left = Math.floor(Math.random() * maxX) + 'px';
+            gall.style.top = Math.floor(Math.random() * maxY) + 'px';
+        }
+
+        gall.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Score: ${score}`;
+            randomPosition();
+        });
+
+        randomPosition();
+
+        const timer = setInterval(() => {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert(`Game over! Your score is ${score}`);
+                gall.style.display = 'none';
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
