@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
     color: #333;
     line-height: 1.6;
-    font-size: 18px;
+    font-size: 2vh;  /* Changed from 18px */
     background-image: url('images/fringed-gall.JPG');
     background-size: cover;
     background-position: center;
@@ -20,7 +20,7 @@ body {
 .fixed-header {
     background-color: rgba(0, 0, 0, 0.85);
     text-align: center;
-    padding: 1rem 0;
+    padding: 2vh 0;  /* Changed from 1rem */
     box-shadow: 0 2px 4px rgba(136, 136, 136, 0.1);
 }
 
@@ -30,16 +30,16 @@ body {
 }
 
 .profile-container {
-    max-width: 800px;
+    max-width: 80vw;  /* Changed from 800px */
     margin: 0 auto;
 }
 
 .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 20vh;  /* Changed from 200px */
+    height: 20vh;  /* Changed from 200px */
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 2vh;  /* Changed from 1rem */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,7 +47,7 @@ body {
     display: flex;
     flex: 1;
     gap: 2rem;
-    padding: 2rem;
+    padding: 2vh;  /* Changed from 2rem */
     min-height: 0;
 }
 
@@ -55,10 +55,10 @@ body {
     flex: 1;
     background-color: rgba(255, 255, 255, 0.65);
     border-radius: 0.5rem;
-    padding: 2rem;
+    padding: 2vh;  /* Changed from 2rem */
     overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 400px);
+    max-height: calc(100vh - 40vh);  /* Changed from 400px */
 }
 
 .main-content {
@@ -71,46 +71,46 @@ body {
 
 /* Typography */
 h1 {
-    font-size: 3rem;
-    margin: 0.5rem 0;
+    font-size: 5vh;  /* Changed from 3rem */
+    margin: 1vh 0;   /* Changed from 0.5rem */
     color: #1f2937;
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
+    font-size: 2.5vh;  /* Changed from 1.5rem */
+    margin: 1vh 0;     /* Changed from 0.5rem */
     font-weight: normal;
     color: #4b5563;
 }
 
 h3 {
-    font-size: 2rem;
-    margin: 0 0 1.5rem 0;
+    font-size: 3vh;    /* Changed from 2rem */
+    margin: 0 0 2vh 0; /* Changed from 1.5rem */
     color: #1f2937;
 }
 
 h4 {
-    font-size: 1.25rem;
-    margin: 1rem 0;
+    font-size: 2vh;    /* Changed from 1.25rem */
+    margin: 2vh 0;     /* Changed from 1rem */
     color: #1f2937;
 }
 
 /* Research section */
 .research-section p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    font-size: 2vh;    /* Changed from 1.2rem */
+    margin-bottom: 2vh; /* Changed from 1.5rem */
 }
 
 .research-images {
     display: flex;
-    gap: 1rem;
-    margin: 2rem 0;
+    gap: 2vh;          /* Changed from 1rem */
+    margin: 3vh 0;     /* Changed from 2rem */
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 
 .research-images img {
-    width: 250px !important;
+    width: 25vw !important;  /* Changed from 250px */
     height: auto !important;
     object-fit: contain;
 }
@@ -118,20 +118,20 @@ h4 {
 /* Publications section */
 .publication {
     border-left: 4px solid #4ade80;
-    padding-left: 1.5rem;
-    margin-bottom: 2rem;
+    padding-left: 2vh;    /* Changed from 1.5rem */
+    margin-bottom: 3vh;   /* Changed from 2rem */
 }
 
 .journal, .authors {
-    font-size: 0.9rem;
+    font-size: 1.8vh;     /* Changed from 0.9rem */
     color: #4b5563;
-    margin: 0.5rem 0;
+    margin: 1vh 0;        /* Changed from 0.5rem */
 }
 
 .doi-link {
     color: #059669;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.8vh;     /* Changed from 0.9rem */
 }
 
 .doi-link:hover {
@@ -141,9 +141,9 @@ h4 {
 /* Affiliations section */
 .affiliations-list {
     display: flex;
-    gap: 2rem;
+    gap: 3vh;             /* Changed from 2rem */
     align-items: center;
-    margin: 1rem 0;
+    margin: 2vh 0;        /* Changed from 1rem */
     justify-content: center;
 }
 
@@ -157,7 +157,7 @@ h4 {
 }
 
 .affiliation-logo {
-    width: 40px !important;
+    width: 4vh !important;  /* Changed from 40px */
     height: auto !important;
     object-fit: contain;
 }
@@ -165,8 +165,8 @@ h4 {
 /* Contact section */
 .social-links {
     display: flex;
-    gap: 2rem;
-    margin-top: 1rem;
+    gap: 3vh;              /* Changed from 2rem */
+    margin-top: 2vh;       /* Changed from 1rem */
     justify-content: center;
 }
 
@@ -175,8 +175,8 @@ h4 {
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.2rem;
+    gap: 1vh;              /* Changed from 0.5rem */
+    font-size: 2vh;        /* Changed from 1.2rem */
     justify-content: center;
 }
 
@@ -186,15 +186,15 @@ h4 {
 
 /* Blog styles */
 .blog-post {
-    margin-bottom: 2rem;
-    padding-bottom: 2rem;
+    margin-bottom: 3vh;    /* Changed from 2rem */
+    padding-bottom: 3vh;   /* Changed from 2rem */
     border-bottom: 1px solid #ddd;
 }
 
 .post-meta {
     color: #6b7280;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+    font-size: 1.8vh;      /* Changed from 0.9rem */
+    margin-bottom: 2vh;    /* Changed from 1rem */
 }
 
 /* Responsive design */
@@ -210,27 +210,27 @@ h4 {
 
 @media (max-width: 768px) {
     body {
-        font-size: 16px;
+        font-size: 1.8vh;  /* Changed from 16px */
     }
 
     .profile-image {
-        width: 150px;
-        height: 150px;
+        width: 15vh;       /* Changed from 150px */
+        height: 15vh;      /* Changed from 150px */
     }
 
     h1 {
-        font-size: 2rem;
+        font-size: 4vh;    /* Changed from 2rem */
     }
 
     h2 {
-        font-size: 1.25rem;
+        font-size: 2vh;    /* Changed from 1.25rem */
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 2.5vh;  /* Changed from 1.5rem */
     }
 
     .content-wrapper {
-        padding: 1rem;
+        padding: 1vh;      /* Changed from 1rem */
     }
 }
