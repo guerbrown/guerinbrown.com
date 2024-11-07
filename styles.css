@@ -234,3 +234,57 @@ h4 {
         padding: 1vh;      /* Changed from 1rem */
     }
 }
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    body {
+        font-size: 16px;
+        overflow-y: auto;
+    }
+
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+        margin-top: 25vh; /* Add space for fixed header */
+        padding: 1rem;
+        height: auto;
+    }
+
+    .scroll-column {
+        max-height: none;
+        overflow-y: visible;
+        margin-bottom: 2rem;
+    }
+
+    /* Change order of content */
+    .blog-content {
+        order: 2; /* Puts blog after main content */
+    }
+
+    .main-content {
+        order: 1; /* Puts research first */
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
