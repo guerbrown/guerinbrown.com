@@ -19,9 +19,10 @@ body {
 /* Fixed Header */
 .fixed-header {
     background-color: rgba(0, 0, 0, 0.85);
-    text-align: center;
-    padding: 2vh 0;  /* Changed from 1rem */
+    text-align: left; /* Changed from center */
+    padding: 1rem 2rem; /* Added horizontal padding */
     box-shadow: 0 2px 4px rgba(136, 136, 136, 0.1);
+    height: 15vh; /* Reduced height */
 }
 
 .fixed-header h1,
@@ -30,17 +31,24 @@ body {
 }
 
 .profile-container {
-    max-width: 80vw;  /* Changed from 800px */
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .profile-image {
-    width: 20vh;  /* Changed from 200px */
-    height: 20vh;  /* Changed from 200px */
+    width: 100px; /* Smaller profile image */
+    height: 100px; /* Smaller profile image */
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 2vh;  /* Changed from 1rem */
+    margin-bottom: 0; /* Removed bottom margin */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-text {
+    flex: 1;
 }
 
 .content-wrapper {
@@ -58,7 +66,7 @@ body {
     padding: 2vh;  /* Changed from 2rem */
     overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-height: calc(100vh - 40vh);  /* Changed from 400px */
+    max-height: calc(1000vh - 40vh);  /* Changed from 400px */
 }
 
 .main-content {
@@ -110,7 +118,7 @@ h4 {
 }
 
 .research-images img {
-    width: 25vw !important;  /* Changed from 250px */
+    width: 58vw !important;  /* Changed from 250px */
     height: auto !important;
     object-fit: contain;
 }
