@@ -260,11 +260,11 @@ h4 {
 
     /* Image sizes for mobile */
     .research-images img {
-        width: 200px !important; /* Smaller for mobile */
+        width: 20px !important; /* Smaller for mobile */
     }
 
     .affiliation-logo, 
     .logo-link img {
-        width: 30px !important; /* Smaller logos */
+        width: 3px !important; /* Smaller logos */
     }
 }
