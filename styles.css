@@ -205,7 +205,7 @@ h4 {
     }
 
     .fixed-header {
-        height: 12vh; /* Made smaller */
+        height: 50vh; /* Made smaller */
     }
 
     .profile-image {
@@ -220,7 +220,7 @@ h4 {
     .content-wrapper {
         flex-direction: column;
         padding: 1rem;
-        padding-top: 15vh; /* Adjusted to match new header size */
+        padding-top: 50vh; /* Adjusted to match new header size */
         height: auto;
     }
 
@@ -251,14 +251,18 @@ h4 {
         font-size: 1.5rem;
     }
 
+    h4 {
+        font-size: 1rem;
+    }
+
     /* Make CT images much smaller on mobile */
     .research-images img {
-        width: 150px !important; /* Even smaller */
+        width: 10px !important; /* Even smaller */
         max-width: 10vw !important; /* Prevent overflow */
     }
 
     .affiliation-logo, 
     .logo-link img {
-        width: 80px !important; /* Smaller logos */
+        width: 100px !important; /* Smaller logos */
     }
 }
