@@ -19,10 +19,9 @@ body {
 /* Fixed Header */
 .fixed-header {
     background-color: rgba(0, 0, 0, 0.85);
-    text-align: left; /* Changed from center */
-    padding: 1rem 2rem; /* Added horizontal padding */
+    text-align: center;
+    padding: 2vh 0;  /* Changed from 1rem */
     box-shadow: 0 2px 4px rgba(136, 136, 136, 0.1);
-    height: 10vh; /* Reduced height */
 }
 
 .fixed-header h1,
@@ -31,24 +30,17 @@ body {
 }
 
 .profile-container {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    max-width: 1200px;
+    max-width: 80vw;  /* Changed from 800px */
     margin: 0 auto;
 }
 
 .profile-image {
-    width: 100px; /* Smaller profile image */
-    height: 100px; /* Smaller profile image */
+    width: 20vh;  /* Changed from 200px */
+    height: 20vh;  /* Changed from 200px */
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 0; /* Removed bottom margin */
+    margin-bottom: 2vh;  /* Changed from 1rem */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.profile-text {
-    flex: 1;
 }
 
 .content-wrapper {
@@ -66,7 +58,7 @@ body {
     padding: 2vh;  /* Changed from 2rem */
     overflow-y: auto;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-height: calc(1000vh - 40vh);  /* Changed from 400px */
+    max-height: calc(100vh - 40vh);  /* Changed from 400px */
 }
 
 .main-content {
@@ -208,7 +200,7 @@ h4 {
 /* Responsive design */
 @media (max-width: 1024px) {
     body {
-        font-size: 18px;
+        font-size: 20px;
         overflow-y: auto;
     }
 
@@ -225,6 +217,28 @@ h4 {
         gap: 1rem; /* Reduced gap between image and text */
     }
 
+    .content-wrapper {
+        flex-direction: column;
+        padding: 1rem;
+        padding-top: 15vh; /* Adjusted to match new header size */
+        height: auto;
+    }
+
+    .scroll-column {
+        max-height: none;
+        overflow-y: visible;
+        margin-bottom: 2rem;
+    }
+
+    /* Change order of content */
+    .blog-content {
+        order: 2; /* Puts blog after main content */
+    }
+
+    .main-content {
+        order: 1; /* Puts research first */
+    }
+
     h1 {
         font-size: 1.5rem; /* Made smaller */
     }
@@ -233,22 +247,18 @@ h4 {
         font-size: 1rem; /* Made smaller */
     }
 
-    .content-wrapper {
-        flex-direction: column;
-        padding: 1rem;
-        padding-top: 15vh; /* Adjusted to match new header size */
-        height: auto;
+    h3 {
+        font-size: 1.5rem;
     }
 
     /* Make CT images much smaller on mobile */
     .research-images img {
         width: 150px !important; /* Even smaller */
-        max-width: 80vw !important; /* Prevent overflow */
+        max-width: 10vw !important; /* Prevent overflow */
     }
 
-    /* Make logos smaller on mobile */
     .affiliation-logo, 
     .logo-link img {
-        width: 25px !important; /* Even smaller */
+        width: 80px !important; /* Smaller logos */
     }
 }
