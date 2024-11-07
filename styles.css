@@ -221,7 +221,7 @@ h4 {
 
     .content-wrapper {
         flex-direction: column;
-        margin-top: 30vh; /* Add space for fixed header */
+        margin-top: 50vh; /* Add space for fixed header */
         padding: 1rem;
         height: auto;
     }
@@ -260,11 +260,11 @@ h4 {
 
     /* Image sizes for mobile */
     .research-images img {
-        width: 20px !important; /* Smaller for mobile */
+        width: 10px !important; /* Smaller for mobile */
     }
 
     .affiliation-logo, 
     .logo-link img {
-        width: 3px !important; /* Smaller logos */
+        width: 10px !important; /* Smaller logos */
     }
 }
