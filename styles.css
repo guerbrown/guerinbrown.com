@@ -208,63 +208,47 @@ h4 {
 /* Responsive design */
 @media (max-width: 1024px) {
     body {
-        font-size: 20px;
+        font-size: 18px;
         overflow-y: auto;
     }
 
     .fixed-header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
+        height: 12vh; /* Made smaller */
+    }
+
+    .profile-image {
+        width: 60px; /* Made much smaller */
+        height: 60px;
+    }
+
+    .profile-container {
+        gap: 1rem; /* Reduced gap between image and text */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Made smaller */
+    }
+
+    h2 {
+        font-size: 1rem; /* Made smaller */
     }
 
     .content-wrapper {
         flex-direction: column;
-        margin-top: 50vh; /* Add space for fixed header */
         padding: 1rem;
+        padding-top: 15vh; /* Adjusted to match new header size */
         height: auto;
     }
 
-    .scroll-column {
-        max-height: none;
-        overflow-y: visible;
-        margin-bottom: 2rem;
-    }
-
-    /* Change order of content */
-    .blog-content {
-        order: 2; /* Puts blog after main content */
-    }
-
-    .main-content {
-        order: 1; /* Puts research first */
-    }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-    }
-
-    /* Image sizes for mobile */
+    /* Make CT images much smaller on mobile */
     .research-images img {
-        width: 10px !important; /* Smaller for mobile */
+        width: 150px !important; /* Even smaller */
+        max-width: 80vw !important; /* Prevent overflow */
     }
 
+    /* Make logos smaller on mobile */
     .affiliation-logo, 
     .logo-link img {
-        width: 10px !important; /* Smaller logos */
+        width: 25px !important; /* Even smaller */
     }
 }
