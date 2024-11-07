@@ -1,98 +1,221 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guerin Brown</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Add Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
-    <div class="site-container">
-        <!-- Background Image -->
-        <div class="background-image"></div>
+/* Base styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    font-size: 18px;
+    background-color: #f0f0f0;
+}
 
-        <!-- Navigation -->
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="publications.html">Publications</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-        </nav>
+/* Two-column layout */
+.two-column-layout {
+    display: flex;
+    min-height: 100vh;
+}
 
-        <!-- Header with Profile -->
-        <header>
-            <div class="profile-container">
-                <img src="images/uiowa-headshot.jpg" alt="Guerin Brown" class="profile-image">
-                <h1>Guerin Brown</h1>
-                <h2>Integrated Biology PhD Student at the University of Iowa</h2>
-            </div>
-        </header>
+/* Main content column */
+.main-column {
+    flex: 2;
+    overflow-y: auto;
+    padding: 2rem;
+    max-width: 900px;
+}
 
-        <!-- Main Content -->
-        <main>
-            <div class="content-container">
-                <!-- Research Section -->
-                <div class="grid">
-                    <div class="research-section">
-                        <h3>Research Focus</h3>
-                        <p>I primarily study the evolution and speciation of insects, with particular interest for galling wasps on oaks and their parasites. I am interested in how interspecific interactions and ecological niche saturation function to drive insect biodiversity.</p>
-                        <p>My current work is focused on collecting genetic data for oak gall wasps and their parasitoids, kleptoparasites, and hyperparasites from extremely broad geographic locations.</p>
-                        <div class="research-images">
-                            <img src="images/2588-412_Burrous.JPG" alt="Gall Cross Section">
-                            <img src="images/fringed-gall.JPG" alt="Gall Research">
-                        </div>
-                    </div>
+/* Blog column */
+.blog-column {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    min-width: 300px;
+}
 
-                    <div class="publications-section">
-                        <h3>Recent Publications</h3>
-                        <div class="publication">
-                            <h4>One must imagine Sisyphus happy: Integrative taxonomic characterization of 22 new Ceroptres species</h4>
-                            <p class="journal">Zootaxa (2024)</p>
-                            <p class="authors">NASTASI, L.F., SMITH, C.N., DAVIS, C.K., WARD, A.K.G., BROWN, G., et al.</p>
-                            <a href="https://doi.org/10.11646/zootaxa.5508.1.1" class="doi-link">DOI: 10.11646/zootaxa.5508.1.1</a>
-                        </div>
-                        <div class="publication">
-                            <h4>Speciation in kleptoparasites of oak gall wasps often correlates with shifts into new tree habitats, tree organs, or gall morphospace</h4>
-                            <p class="journal">Evolution (2024)</p>
-                            <p class="authors">Ward, A., Zhang, Y.M., Brown, G.E., et al.</p>
-                            <a href="https://doi.org/10.1093/evolut/qpad202" class="doi-link">DOI: 10.1093/evolut/qpad202</a>
-                        </div>
-                    </div>
-                </div>
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-                <!-- Affiliations -->
-                <div class="affiliations-section">
-                    <h3>Affiliations</h3>
-                    <div class="affiliations-grid">
-                        <a href="https://www.gallformers.org/">Gallformers</a>
-                        <a href="https://forbes.lab.uiowa.edu/">Forbes Lab</a>
-                    </div>
-                </div>
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
-                <!-- Contact Section -->
-                <div class="contact-section">
-                    <h3>Get in Touch</h3>
-                    <p>Feel free to reach out for collaborations, questions about my research, or to contribute to the Cynipini Larval Sequencing Project.</p>
-                    <div class="social-links">
-                        <a href="mailto:guerin-brown@uiowa.edu">
-                            <i class="fas fa-envelope"></i>
-                            <span>Email</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/guerin-brown/">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </a>
-                        <a href="https://twitter.com/guerin_brown">
-                            <i class="fab fa-twitter"></i>
-                            <span>Twitter</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-</body>
-</html>
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+h1 {
+    font-size: 3.5rem;
+    margin: 1rem 0;
+    color: #1f2937;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    font-weight: normal;
+    color: #4b5563;
+}
+
+h3 {
+    font-size: 2.5rem;
+    margin: 2rem 0 1rem;
+    color: #1f2937;
+}
+
+h4 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #1f2937;
+}
+
+/* Main content sections */
+.content-container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Research section */
+.research-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.research-images {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.research-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Publications section */
+.publication {
+    border-left: 4px solid #4ade80;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.journal, .authors {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 0.5rem 0;
+}
+
+.doi-link {
+    color: #059669;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.doi-link:hover {
+    color: #047857;
+}
+
+/* Affiliations section */
+.affiliations-list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.logo-link {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
+.affiliation-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Contact section */
+.social-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #059669;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.social-links a:hover {
+    color: #047857;
+}
+
+/* Blog styles */
+.blog-post {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .two-column-layout {
+        flex-direction: column;
+    }
+
+    .blog-column {
+        border-left: none;
+        border-top: 1px solid #ddd;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .profile-image {
+        width: 200px;
+        height: 200px;
+    }
+}
