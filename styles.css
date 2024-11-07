@@ -205,7 +205,7 @@ h4 {
     }
 
     .fixed-header {
-        height: 50vh; /* Made smaller */
+        height: 30vh; /* Made smaller */
     }
 
     .profile-image {
@@ -220,7 +220,7 @@ h4 {
     .content-wrapper {
         flex-direction: column;
         padding: 1rem;
-        padding-top: 50vh; /* Adjusted to match new header size */
+        padding-top: 20vh; /* Adjusted to match new header size */
         height: auto;
     }
 
@@ -255,10 +255,21 @@ h4 {
         font-size: 1rem;
     }
 
-    /* Make CT images much smaller on mobile */
-    .research-images img {
-        width: 10px !important; /* Even smaller */
-        max-width: 10vw !important; /* Prevent overflow */
+    /* Target the gif specifically */
+    img[src*="ct-fly-through.gif"] {
+        width: 100% !important;
+        max-width: 300px !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
+    }
+
+    /* Make the container constrain the image */
+    .research-images {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 1rem;
+        box-sizing: border-box;
     }
 
     .affiliation-logo, 
