@@ -10,39 +10,131 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-}
-
-/* Two-column layout */
-.two-column-layout {
-    display: flex;
-    min-height: 100vh;
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-/* Main content column */
-.main-column {
-    flex: 2;
-    overflow-y: auto;
-    padding: 2rem;
-    max-width: 900px;
-}
-
-/* Research images specific sizes */
-.research-images {
+    background-repeat: no-repeat;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin: 2rem 0;
 }
 
-.research-image {
-    max-width: 400px; /* Adjust this value as needed */
-    height: auto;
-    border-radius: 0.5rem;
+/* Fixed Header */
+.fixed-header {
+    background-color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 2rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Affiliations logos */
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Content Layout */
+.content-wrapper {
+    display: flex;
+    flex: 1;
+    gap: 2rem;
+    padding: 2rem;
+    min-height: 0; /* Important for scrolling */
+}
+
+.scroll-column {
+    flex: 1;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: calc(100vh - 400px); /* Adjust based on header height */
+}
+
+.main-content {
+    flex: 2;
+}
+
+.blog-content {
+    flex: 1;
+}
+
+/* Typography */
+h1 {
+    font-size: 3rem;
+    margin: 0.5rem 0;
+    color: #1f2937;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: normal;
+    color: #4b5563;
+}
+
+h3 {
+    font-size: 2rem;
+    margin: 0 0 1.5rem 0;
+    color: #1f2937;
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+    color: #1f2937;
+}
+
+/* Research section */
+.research-section p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.research-images {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.research-images img {
+    width: 250px !important;
+    height: auto !important;
+    object-fit: contain;
+}
+
+/* Publications section */
+.publication {
+    border-left: 4px solid #4ade80;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.journal, .authors {
+    font-size: 0.9rem;
+    color: #4b5563;
+    margin: 0.5rem 0;
+}
+
+.doi-link {
+    color: #059669;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.doi-link:hover {
+    color: #047857;
+}
+
+/* Affiliations section */
 .affiliations-list {
     display: flex;
     gap: 2rem;
@@ -50,10 +142,88 @@ body {
     margin: 1rem 0;
 }
 
+.logo-link {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+}
+
 .affiliation-logo {
-    height: 60px; /* Reduced size for logos */
-    width: auto;
+    width: 40px !important;
+    height: auto !important;
     object-fit: contain;
 }
 
-/* Rest of your CSS remains the same */
+/* Contact section */
+.social-links {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: #059669;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.social-links a:hover {
+    color: #047857;
+}
+
+/* Blog styles */
+.blog-post {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.post-meta {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .scroll-column {
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .content-wrapper {
+        padding: 1rem;
+    }
+}
