@@ -265,7 +265,7 @@ h4 {
 
     /* Make the container constrain the image */
     .research-images {
-        width: 150%;
+        width: 100%;
         padding: 0 1rem;
         box-sizing: border-box;
     }
