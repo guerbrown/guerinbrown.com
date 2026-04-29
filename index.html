@@ -302,6 +302,8 @@
             color: rgba(255,255,255,.6);
             padding: 3rem 2rem 0;
             margin-top: 4rem;
+            position: relative;
+            z-index: 1;
         }
         .footer-inner {
             max-width: 900px;
@@ -336,11 +338,12 @@
         .contact-link i { width: 1rem; text-align: center; }
 
         .footer-affiliations { text-align: center; }
-        .aff-logos { display: flex; gap: 1.75rem; align-items: center; justify-content: center; }
+        .aff-logos { display: flex; gap: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap; }
         .aff-logos a { transition: opacity .2s; }
         .aff-logos a:hover { opacity: .85; }
-        .aff-logos img { height: 38px; width: auto; opacity: .85; transition: opacity .2s; }
-        .aff-logos img.aff-logo-large { height: 76px; }
+        .aff-logos img { height: 36px; max-width: 100px; width: auto; object-fit: contain; opacity: .85; transition: opacity .2s; }
+        .aff-logos img.aff-logo-large { height: 72px; max-width: 160px; }
+        .aff-logos img.aff-logo-inat { height: 30px; max-width: 90px; }
         .aff-logos a:hover img { opacity: 1; }
 
         .footer-right { text-align: right; }
@@ -391,14 +394,20 @@
             .aff-logos { justify-content: flex-start; }
             .hero { height: 320px; }
             .profile-wrap { margin-top: -220px; }
+            .profile-photo { width: 90px; height: 90px; }
             .profile-photo { width: 110px; height: 110px; }
             .profile-text h1 { font-size: 1.8rem; }
             .nav-links { gap: 1.25rem; }
         }
         @media (max-width: 560px) {
-            .profile-card { flex-direction: column; align-items: center; text-align: center; }
-            .hero { height: 240px; }
-            .profile-wrap { margin-top: -180px; }
+            .profile-card { flex-direction: row; align-items: flex-end; gap: 1rem; }
+            .hero { height: 280px; }
+            .profile-wrap { margin-top: -260px; }
+            .profile-photo { width: 85px; height: 85px; }
+            .profile-text h1 { font-size: 1.4rem; }
+            .profile-text .role { font-size: .85rem; }
+            .profile-text .dept { font-size: .78rem; }
+            .page-section:first-child { padding-top: 8rem; }
             .site-nav { padding: 0 1.25rem; }
             .nav-links { gap: .9rem; }
             .nav-links a { font-size: .78rem; }
@@ -654,7 +663,7 @@
                 <div class="aff-logos">
                     <a href="https://www.gallformers.org/"><img src="images/gallformers-logo.png" alt="Gallformers"></a>
                     <a href="https://forbes.lab.uiowa.edu/"><img class="aff-logo-large" src="images/lab_logo_noBG_black.svg" alt="Forbes Lab"></a>
-                    <a href="https://www.inaturalist.org/"><img src="images/inat-logo.png" alt="iNaturalist"></a>
+                    <a href="https://www.inaturalist.org/"><img class="aff-logo-inat" src="images/inat-logo.png" alt="iNaturalist"></a>
                 </div>
             </div>
             <div class="footer-right">
