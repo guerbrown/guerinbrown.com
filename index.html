@@ -5,601 +5,701 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guerin Brown</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --color-cream: #faf8f5;
-            --color-warm-white: #fffefb;
-            --color-text: #2d3a31;
-            --color-text-secondary: #5a6b5e;
-            --color-accent: #4a7c59;
-            --color-accent-light: #6b9b7a;
-            --color-border: #e8e4de;
-            --color-card-bg: #ffffff;
-            --shadow-soft: 0 2px 8px rgba(45, 58, 49, 0.06);
-            --shadow-medium: 0 4px 20px rgba(45, 58, 49, 0.08);
-            --font-serif: 'Source Serif 4', Georgia, serif;
-            --font-sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
-            --header-height: 200px;
+            --cream:      #f7f4ef;
+            --warm-white: #fdfcf9;
+            --paper:      #ffffff;
+            --ink:        #252d24;
+            --ink-mid:    #4a5549;
+            --ink-light:  #7a8c7e;
+            --moss:       #3d6b4a;
+            --moss-light: #5a8c69;
+            --moss-pale:  #e8f0ea;
+            --gold:       #8a6c2a;
+            --gold-pale:  #f5edda;
+            --rule:       #ddd8d0;
+            --shadow-sm:  0 1px 4px rgba(37,45,36,.06);
+            --shadow-md:  0 4px 20px rgba(37,45,36,.09);
+            --shadow-lg:  0 8px 40px rgba(37,45,36,.12);
+            --serif:      'Times New Roman', Times, Georgia, serif;
+            --sans:       Georgia, 'Times New Roman', serif;
+            --nav-h:      60px;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            height: 100%;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--color-cream);
-            color: var(--color-text);
-            line-height: 1.7;
+            font-family: var(--sans);
+            background: var(--cream);
+            color: var(--ink);
+            line-height: 1.72;
             font-size: 16px;
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Hero header with forest image */
-        .hero {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 40%;
-        }
-
-        .hero::after {
+        /* Hero */
+        .hero { position: relative; height: 480px; overflow: hidden; }
+        .hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center 35%; display: block; }
+        .hero::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(to top, var(--color-cream) 0%, transparent 100%);
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(37,45,36,.38) 0%, rgba(37,45,36,.10) 40%, transparent 60%, var(--cream) 100%);
         }
 
-        /* Profile section overlapping hero */
-        .profile-section {
-            max-width: 1100px;
-            margin: -140px auto 0;
+        /* Sticky nav */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--nav-h);
+            background: rgba(247,244,239,.94);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2.5rem;
+            transition: box-shadow .2s;
+        }
+        .site-nav.scrolled { box-shadow: var(--shadow-md); }
+
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--ink-mid);
+            text-decoration: none;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
+            transition: color .2s, border-color .2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--moss); border-bottom-color: var(--moss); }
+
+        /* Profile — sits at the bottom of the hero */
+        .profile-wrap {
+            max-width: 900px;
+            margin: 0 auto;
             padding: 0 2rem;
             position: relative;
             z-index: 10;
-            flex-shrink: 0;
+            margin-top: -380px;
+            padding-bottom: 1.5rem;
         }
-
-        .profile-card {
-            display: flex;
-            align-items: flex-end;
-            gap: 1.5rem;
-        }
-
-        .profile-image {
-            width: 140px;
-            height: 140px;
+        .profile-card { display: flex; align-items: flex-end; gap: 1.75rem; }
+        .profile-photo {
+            width: 148px; height: 148px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--color-warm-white);
-            box-shadow: var(--shadow-medium);
+            border: 5px solid var(--warm-white);
+            box-shadow: var(--shadow-lg);
+            flex-shrink: 0;
+        }
+        .profile-text h1 {
+            font-family: var(--serif);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.15;
+            margin-bottom: .2rem;
+        }
+
+        .profile-text .role { font-size: 1rem; color: rgba(255,255,255,.85); font-weight: 400; margin-bottom: .15rem; }
+        .profile-text .dept { font-size: .875rem; color: rgba(255,255,255,.75); font-weight: 500; }
+
+        /* Page sections */
+        .page-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            scroll-margin-top: calc(var(--nav-h) + 1rem);
+        }
+        /* First section needs extra top padding to clear the overlapping profile card */
+        .page-section:first-child {
+            padding-top: 17rem;
+        }
+        .page-section + .page-section { border-top: 1px solid var(--rule); }
+
+        .section-label { display: flex; align-items: center; gap: .75rem; margin-bottom: 1.75rem; }
+        .section-label .eyebrow {
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--moss);
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 28px; height: 2px;
+            background: var(--moss);
             flex-shrink: 0;
         }
 
-        .profile-info {
-            padding-bottom: 0.75rem;
-        }
-
-        .profile-info h1 {
-            font-family: var(--font-serif);
-            font-size: 2.25rem;
+        h2.section-title {
+            font-family: var(--serif);
+            font-size: 1.95rem;
             font-weight: 700;
-            color: var(--color-text);
-            margin-bottom: 0.25rem;
+            color: var(--ink);
+            margin-bottom: 1.25rem;
+            line-height: 1.25;
         }
 
-        .profile-info p {
-            font-size: 1.05rem;
-            color: var(--color-text-secondary);
-            font-weight: 500;
+        h3.sub-title {
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: .5rem;
+            line-height: 1.35;
         }
 
-        /* Main layout with scrolling columns */
-        .main-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2.5rem 2rem 2rem;
+        p { color: var(--ink-mid); margin-bottom: 1rem; }
+        p:last-child { margin-bottom: 0; }
+        a { color: var(--moss); text-decoration: none; transition: color .2s; }
+        a:hover { color: var(--moss-light); text-decoration: underline; }
+
+        /* About grid */
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 380px;
-            gap: 2.5rem;
-            flex: 1;
-            min-height: 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
 
-        /* Scrolling columns */
-        .content-column,
-        .sidebar {
-            background: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            padding: 1.75rem;
-            overflow-y: auto;
-            max-height: calc(100vh - var(--header-height) - 4rem);
-        }
 
-        /* Custom scrollbar */
-        .content-column::-webkit-scrollbar,
-        .sidebar::-webkit-scrollbar {
-            width: 8px;
+        .pill-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            padding: .4rem 1rem;
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            border-radius: 20px;
+            font-size: .85rem;
+            color: var(--ink-mid);
+            transition: all .2s;
         }
+        .pill:hover { background: var(--moss-pale); border-color: var(--moss-light); color: var(--moss); text-decoration: none; }
+        .pill i { font-size: .75rem; }
 
-        .content-column::-webkit-scrollbar-track,
-        .sidebar::-webkit-scrollbar-track {
-            background: var(--color-border);
-            border-radius: 4px;
+        /* Pullquote */
+        .pullquote {
+            border-left: 3px solid var(--moss);
+            padding: 1rem 1.5rem;
+            margin: 1.25rem 0;
+            background: var(--moss-pale);
+            border-radius: 0 8px 8px 0;
         }
-
-        .content-column::-webkit-scrollbar-thumb,
-        .sidebar::-webkit-scrollbar-thumb {
-            background: var(--color-accent);
-            border-radius: 4px;
-        }
-
-        .content-column::-webkit-scrollbar-thumb:hover,
-        .sidebar::-webkit-scrollbar-thumb:hover {
-            background: var(--color-accent-light);
-        }
-
-        /* Section styling */
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        section:last-child {
-            margin-bottom: 0;
-        }
-
-        h2 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
+        .pullquote p {
+            font-family: var(--serif);
+            font-style: normal;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--color-border);
+            color: var(--ink);
+            margin: 0;
+            line-height: 1.6;
         }
 
-        h3 {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 0.35rem;
-        }
-
-        p {
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        p:last-child {
-            margin-bottom: 0;
-        }
-
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--color-accent-light);
-            text-decoration: underline;
-        }
-
-        /* Research section */
-        .research-content p {
-            text-align: justify;
-            hyphens: auto;
-        }
-
-        .research-image {
-            margin: 1.5rem 0;
+        /* Research */
+        .research-img-wrap { margin: 2rem 0; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-md); }
+        .research-img-wrap img { display: block; width: 100%; height: auto; }
+        .research-img-wrap figcaption {
+            background: var(--ink);
+            color: rgba(255,255,255,.6);
+            font-size: .8rem;
+            padding: .6rem 1rem;
             text-align: center;
-        }
-
-        .research-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: var(--shadow-soft);
         }
 
         /* Publications */
-        .publication {
-            background: var(--color-cream);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            transition: box-shadow 0.2s ease;
+        .pub-list { display: flex; flex-direction: column; gap: 1rem; }
+        .pub-card {
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            transition: box-shadow .2s, transform .2s;
+        }
+        .pub-card:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+        .pub-card h3 {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.45;
+            margin-bottom: .4rem;
+        }
+        .pub-meta { font-size: .85rem; color: var(--ink-light); margin: .2rem 0; }
+        .pub-meta.journal { font-style: italic; }
+        .pub-meta.preprint { color: var(--moss); font-style: italic; }
+        .pub-meta.authors { font-size: .8rem; }
+        .pub-doi { display: inline-block; margin-top: .5rem; font-size: .8rem; font-weight: 600; color: var(--moss); }
+
+        /* Teaching */
+        .teaching-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 3rem; align-items: start; }
+
+        .exp-list { display: flex; flex-direction: column; }
+        .exp-item {
+            display: grid;
+            grid-template-columns: 95px 1fr;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .exp-item:last-child { border-bottom: none; }
+        .exp-year { font-size: .78rem; font-weight: 600; color: var(--moss); letter-spacing: .03em; padding-top: .15rem; }
+        .exp-body h3 { font-family: var(--serif); font-size: 1rem; font-weight: 600; margin-bottom: .25rem; }
+        .exp-body p { font-size: .9rem; margin: 0; }
+
+        /* Instructional design cards */
+        .id-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.5rem 0 1.25rem; }
+        .id-card {
+            background: var(--gold-pale);
+            border: 1px solid #d4b070;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+        }
+        .id-card .card-label {
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: .5rem;
+        }
+        .id-card h3 { font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
+        .id-card p { font-size: .9rem; margin: 0; }
+
+        /* Blog */
+        .blog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .blog-card {
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow .2s, transform .2s;
+        }
+        .blog-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .blog-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+        .blog-card-body { padding: 1.25rem; }
+        .blog-date { font-size: .78rem; color: var(--ink-light); margin-bottom: .4rem; }
+        .blog-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: .5rem; line-height: 1.35; }
+        .blog-card p { font-size: .9rem; margin-bottom: .75rem; }
+        .read-more { font-size: .85rem; font-weight: 600; color: var(--moss); display: inline-flex; align-items: center; gap: .3rem; }
+        .read-more:hover { text-decoration: none; color: var(--moss-light); }
+
+        /* Footer */
+        .site-footer {
+            background: var(--ink);
+            color: rgba(255,255,255,.6);
+            padding: 3rem 2rem 0;
+            margin-top: 4rem;
+        }
+        .footer-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: start;
+            padding-bottom: 2.5rem;
         }
 
-        .publication:hover {
-            box-shadow: var(--shadow-soft);
+        .footer-contact h4,
+        .footer-affiliations h4,
+        .footer-right .footer-name {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: .85rem;
         }
 
-        .publication:last-child {
-            margin-bottom: 0;
-        }
-
-        .publication h3 {
-            line-height: 1.4;
-        }
-
-        .publication-meta {
-            font-size: 0.9rem;
-            color: var(--color-text-secondary);
-            margin: 0.35rem 0;
-        }
-
-        .publication-meta.journal {
-            font-style: italic;
-        }
-
-        .publication-meta.authors {
-            font-size: 0.85rem;
-        }
-
-        .publication-meta.preprint {
-            font-style: italic;
-            color: var(--color-accent);
-        }
-
-        .doi-link {
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Contact */
-        .contact-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
+        .contact-links { display: flex; flex-direction: column; gap: .55rem; }
         .contact-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1.25rem;
-            background: var(--color-accent);
-            color: white;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: background 0.2s ease;
+            gap: .6rem;
+            font-size: .9rem;
+            color: rgba(255,255,255,.6);
+            transition: color .2s;
         }
+        .contact-link:hover { color: #fff; text-decoration: none; }
+        .contact-link i { width: 1rem; text-align: center; }
 
-        .contact-link:hover {
-            background: var(--color-accent-light);
-            text-decoration: none;
-            color: white;
-        }
+        .footer-affiliations { text-align: center; }
+        .aff-logos { display: flex; gap: 1.75rem; align-items: center; justify-content: center; }
+        .aff-logos a { transition: opacity .2s; }
+        .aff-logos a:hover { opacity: .85; }
+        .aff-logos img { height: 38px; width: auto; opacity: .85; transition: opacity .2s; }
+        .aff-logos img.aff-logo-large { height: 76px; }
+        .aff-logos a:hover img { opacity: 1; }
 
-        /* Blog sidebar */
-        .sidebar h2 {
-            text-align: center;
-        }
+        .footer-right { text-align: right; }
+        .footer-right p { font-size: .85rem; margin-bottom: .25rem; }
+        .footer-right a { color: rgba(255,255,255,.45); }
+        .footer-right a:hover { color: #fff; text-decoration: none; }
 
-        .blog-post {
-            background: var(--color-cream);
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .blog-post:last-child {
-            margin-bottom: 0;
-        }
-
-        .blog-post h3 {
-            font-size: 1.1rem;
-        }
-
-        .post-date {
-            font-size: 0.85rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .blog-post p {
-            font-size: 0.95rem;
-        }
-
-        .blog-post img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            margin: 1rem 0;
-        }
-
-        /* Affiliations footer */
-        .affiliations-footer {
-            max-width: 1100px;
+        .footer-bottom {
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem 2rem 1rem;
+            padding: 1.25rem 0 1.5rem;
+            border-top: 1px solid rgba(255,255,255,.1);
             text-align: center;
-            flex-shrink: 0;
+            font-size: .78rem;
+            color: rgba(255,255,255,.3);
         }
 
-        .affiliations-footer h2 {
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--color-text);
-            margin-bottom: 1rem;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
 
-        .affiliations-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            justify-content: center;
+        .cv-download {
+            display: inline-flex;
             align-items: center;
+            gap: .5rem;
+            margin-top: .6rem;
+            padding: .4rem .9rem;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 5px;
+            font-size: .85rem;
+            color: rgba(255,255,255,.75);
+            transition: all .2s;
         }
-
-        .affiliations-grid a {
-            transition: opacity 0.2s ease;
+        .cv-download:hover {
+            background: rgba(255,255,255,.1);
+            border-color: rgba(255,255,255,.7);
+            color: #fff;
+            text-decoration: none;
         }
-
-        .affiliations-grid a:hover {
-            opacity: 0.7;
-        }
-
-        .affiliations-grid img {
-            height: 45px;
-            width: auto;
-        }
-
-        /* Photo credit */
-        .photo-credit {
-            text-align: center;
-            padding: 1rem 2rem 1.5rem;
-            font-size: 0.85rem;
-            color: var(--color-text-secondary);
-            flex-shrink: 0;
-        }
+        .cv-download i { font-size: .8rem; }
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .main-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .content-column,
-            .sidebar {
-                max-height: none;
-                overflow-y: visible;
-            }
-
-            .sidebar {
-                order: 2;
-            }
-
-            .hero {
-                height: 260px;
-            }
-
-            .profile-section {
-                margin-top: -100px;
-            }
-
-            .profile-image {
-                width: 110px;
-                height: 110px;
-            }
-
-            .profile-info h1 {
-                font-size: 1.75rem;
-            }
+        @media (max-width: 820px) {
+            .about-grid, .teaching-intro, .id-grid, .blog-grid { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 2rem; }
+            .footer-right { text-align: left; }
+            .aff-logos { justify-content: flex-start; }
+            .hero { height: 320px; }
+            .profile-wrap { margin-top: -80px; }
+            .profile-photo { width: 110px; height: 110px; }
+            .profile-text h1 { font-size: 1.8rem; }
+            .nav-links { gap: 1.25rem; }
         }
-
-        @media (max-width: 600px) {
-            .hero {
-                height: 200px;
-            }
-
-            .profile-card {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .profile-info {
-                padding-bottom: 0;
-            }
-
-            .profile-info h1 {
-                font-size: 1.5rem;
-            }
-
-            .main-wrapper {
-                padding: 2rem 1.25rem 2rem;
-            }
-
-            h2 {
-                font-size: 1.35rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .contact-link {
-                justify-content: center;
-            }
-
-            .affiliations-grid {
-                gap: 1.5rem;
-            }
-
-            .affiliations-grid img {
-                height: 35px;
-            }
+        @media (max-width: 560px) {
+            .profile-card { flex-direction: column; align-items: center; text-align: center; }
+            .hero { height: 240px; }
+            .profile-wrap { margin-top: -60px; }
+            .site-nav { padding: 0 1.25rem; }
+            .nav-links { gap: .9rem; }
+            .nav-links a { font-size: .78rem; }
+            .page-section { padding: 3rem 1.25rem; }
+            .exp-item { grid-template-columns: 70px 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero with forest background -->
+
+    <!-- Hero -->
     <header class="hero">
-        <img src="images/josh-paluh-forest.JPG" alt="Forest canopy" class="hero-image">
+        <img src="images/josh-paluh-forest.JPG" alt="Oak forest canopy" class="hero-img">
     </header>
 
-    <!-- Profile section -->
-    <div class="profile-section">
+    <!-- Sticky nav -->
+    <nav class="site-nav" id="site-nav">
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#teaching">Teaching</a></li>
+            <li><a href="#blog">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Profile -->
+    <div class="profile-wrap">
         <div class="profile-card">
-            <img src="images/uiowa-headshot.png" alt="Guerin Brown" class="profile-image">
-            <div class="profile-info">
+            <img src="images/uiowa-headshot.png" alt="Guerin Brown" class="profile-photo">
+            <div class="profile-text">
                 <h1>Guerin Brown</h1>
-                <p>Integrated Biology PhD Student at the University of Iowa</p>
+                <p class="role">PhD Candidate in Integrated Biology at the University of Iowa</p>
+                <p class="dept">Entomology · Evolutionary Ecology · Speciation</p>
             </div>
         </div>
     </div>
 
-    <!-- Main content -->
-    <main class="main-wrapper">
-        <!-- Left column -->
-        <div class="content-column">
-            <!-- Research -->
-            <section class="research-content">
-                <h2>Research</h2>
-                <p>I am interested in the evolution and speciation of insects. Most are host-associated, living and reproducing almost exclusively on plants or other animals. These life strategies in insects, phytophagy and parasitism, account for roughly 40% of the described animal diversity on Earth. One explanation for why there are so many host-associated insects is divergent ecological speciation, which drives insect species to use different hosts. Trade-offs between ancestral and derived host environments can lead to divergent selection on traits in those two habitats, which can result in reproductive isolating barriers (RIBs) that catalyze speciation. In this context, traits under divergent selection that can lead to RIBs can be behavioral, temporal (e.g., life history traits), morphological, or a combination of traits. While these mechanisms have been studied in some detail in single host-parasite systems, it is not clear how variation among parasites and hosts affects the likelihood and specific drivers of speciation. One way to address this is to study many parasites interacting with many hosts at the same time and ask whether these different parasites diversify in response to changes in the same ecological dimensions. In other words, are the "rules" the same for all parasites?</p>
-                <p>I am working to address this question in oak gall wasps (Hymenoptera: Cynipidae: Cynipini), which form atypical growths on plants. These "galls" are the result of the female gall wasp depositing eggs into the plant tissue, and the growth serves to protect the offspring until it develops. The gall is thus a perfect environment for development, which entices invaders. And, in fact, hundreds of species of parasites are found in these galls. Some are kleptoparasites which eat the plant material the gall is made of. Others are parasitoids which feed on the gall wasp inside or the kleptoparasites. Others are hyperparasitoids which feed on the parasitoids. I am interested in how these feeding ecologies function with the host ecological dimensions (i.e. the shape, size, color, etc. of the gall) to drive speciation. Rather, do the ecological dimensions matter in the speciation of different parasites, possibly as a result of how an organisms interacts with a resource.</p>
-                <p>To do this, I am collecting galls from all across the United States of America. If you are interested in supporting this project, collaborating with oak gall research, or want to learn more about oak galls and their parasites, please feel free to reach out to me.</p>
-                <p>If you are interested in submitting a gall to our lab that you've found, <a href="https://www.inaturalist.org/posts/83434-cynipini-larval-sequencing-project">please see this link</a>.</p>
-                <div class="research-image">
-                    <picture>
-                        <source media="(max-width: 1024px)" srcset="images/ct-fly-through_mobile.gif">
-                        <source media="(min-width: 1025px)" srcset="images/ct-fly-through.gif">
-                        <img src="images/ct-fly-through.gif" alt="CT scan fly-through of oak gall">
-                    </picture>
-                </div>
-            </section>
+    <main>
 
-            <!-- Publications -->
-            <section>
-                <h2>Publications</h2>
-                <div class="publication">
+        <!-- ABOUT -->
+        <section class="page-section reveal" id="about">
+            <div class="about-grid">
+                <div>
+                    <h2 class="section-title">About</h2>
+                    <p>I am a fourth-year PhD candidate at the University of Iowa studying integrated biology. My central focus is the diversity of parasitic insects and how host associations and host shifting can explain the history of speciation and biodiversity. My work sits at an intersection of evolutionary ecology, phylogenetics, and systematics.</p> 
+                    <p>While parasitic wasps, and their hosts, are my core interest at the moment, I have experience with other insects. Some of my previous work has involved cicadas, predatory beetles, and grain pests. Additionally, my experience with these insects has, historically, come from a lens of conservation and biocontrol.</p>
+                    <p>Outside of research, I have a few different hobbies. Recently, I've started practicing, and competing, in saber fencing. I also spend a lot of time baking and experimenting in the kitchen, collecting and listening to vinyls, & reading science fiction or historical nonfiction.</p>
+                </div>
+                <div>
+                    <h2 class="section-title">Teaching Philosophy</h2>
+                    <div class="pullquote">
+                    <p>I aim to guide students to think logically and empathetically about the world around them and encourage them to apply what they learn with respect to nature and others.</p>
+                    </div>
+                    <p>I believe a good teacher chooses compassion over challenge and values effort over output.</p>
+                    <p>I am committed to creating environments where students engage with foundational biological principles through real-life examples, practical experiences, and honest conversations about ethics in science.</p>
+                    <p>My approach to teaching draws on the ideas of social constructivism. I believe that students learn best when they build understanding collaboratively using meaningful examples and activities with a teacher who scaffolds rather than lectures. </p>
+                    <div class="pill-links">
+                        <a href="https://www.linkedin.com/in/guerin-brown-336694229" class="pill"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://www.researchgate.net/profile/Guerin-Brown" class="pill"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                        <a href="https://orcid.org/0009-0007-4466-5601" class="pill"><i class="fab fa-orcid"></i> ORCID</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESEARCH -->
+        <section class="page-section reveal" id="research">
+            <div class="section-label"><span class="eyebrow">Research</span></div>
+            <h2 class="section-title">Parasites, Hosts, and Ecological Speciation</h2>
+            <p>I am interested in how host-associated insects accumulate into the staggering diversity we see today. Phytophagy and parasitism together account for roughly 40% of described animal diversity on Earth. One compelling explanation for this diversity is divergent ecological speciation. As insect species shift to new host species, trade-offs between ancestral and derived environments drive divergent selection on behavioral, phenological, and morphological traits. These may erect reproductive isolating barriers that could result in the origin of new species.</p>
+            <p>While these mechanisms are well-documented in isolated host-parasite pairs, it remains unclear how variation among parasites affects the likelihood and specific drivers of speciation. I address this by studying <em>many</em> parasites interacting with <em>many</em> hosts simultaneously, asking whether different parasites diversify along the same ecological axes. In other words, whether the "rules" of speciation are general among parasitic wasps.</p>
+            <p>My focal system is oak gall wasps (Hymenoptera: Cynipini), whose galls attract a rich community of invaders. These parasites exhibit three different forms of parasitism: 1) kleptoparasites that consume gall tissue, 2) parasitoids that attack and result in the death of the gall wasp larva, and 3) hyperparasitoids that attack and kill the parasitoids. I am interested in how these different feeding ecologies interacts with the physical dimensions of galls to shape divergence across the community.</p>
+            <figure class="research-img-wrap">
+                <picture>
+                    <source media="(max-width: 820px)" srcset="images/ct-fly-through_mobile.gif">
+                    <img src="images/ct-fly-through.gif" alt="Micro-CT fly-through of an oak gall showing internal structure">
+                </picture>
+                <figcaption>Micro-CT "fly-through" of an oak gall revealing internal larval chambers — the perfect environment for development, and for invaders.</figcaption>
+            </figure>
+
+            <h2 class="section-title" style="margin-top:2.5rem;">Publications</h2>
+            <div class="pub-list">
+                <div class="pub-card">
                     <h3>Periodical cicadas suffer legacy effects of century-old forest removal</h3>
-                    <p class="publication-meta preprint">Preprint – bioRxiv (2025)</p>
-                    <p class="publication-meta authors">Chan, I., Brown, G.E., Castaneda-Santiago, F., Chitty, J.S., Elliott, T.A., Gose, M.J., Hanfland, C.M., Hendrix, S.D., Leerhoff, C.R., Meerdink, S.K., Skibbe, A.M., Steffensen, M.J., Weinrich, C.L., Forbes, A.A.</p>
-                    <a href="https://doi.org/10.1101/2025.11.24.690214" class="doi-link">DOI: 10.1101/2025.11.24.690214</a>
+                    <p class="pub-meta preprint">Preprint — bioRxiv (2025)</p>
+                    <p class="pub-meta authors">Chan, I., Brown, G.E., Castaneda-Santiago, F., Chitty, J.S., Elliott, T.A., Gose, M.J., Hanfland, C.M., Hendrix, S.D., Leerhoff, C.R., Meerdink, S.K., Skibbe, A.M., Steffensen, M.J., Weinrich, C.L., Forbes, A.A.</p>
+                    <a href="https://doi.org/10.1101/2025.11.24.690214" class="pub-doi">DOI: 10.1101/2025.11.24.690214 →</a>
                 </div>
-                <div class="publication">
-                    <h3>Discovery of two Palearctic Bootanomyia Girault (Hymenoptera, Megastigmidae) parasitic wasp species introduced to North America</h3>
-                    <p class="publication-meta journal">Journal of Hymenoptera Research (2025)</p>
-                    <p class="publication-meta authors">Brown, G., Lewis, C., Fridrich, K., Jones, D., Goodwin, E., Weinrich, C., Steffensen, M., Prior, K., Forbes, A.</p>
-                    <a href="https://doi.org/10.3897/jhr.98.152867" class="doi-link">DOI: 10.3897/jhr.98.152867</a>
+                <div class="pub-card">
+                    <h3>Discovery of two Palearctic <em>Bootanomyia</em> Girault (Hymenoptera, Megastigmidae) parasitic wasp species introduced to North America</h3>
+                    <p class="pub-meta journal">Journal of Hymenoptera Research (2025)</p>
+                    <p class="pub-meta authors">Brown, G., Lewis, C., Fridrich, K., Jones, D., Goodwin, E., Weinrich, C., Steffensen, M., Prior, K., Forbes, A.</p>
+                    <a href="https://doi.org/10.3897/jhr.98.152867" class="pub-doi">DOI: 10.3897/jhr.98.152867 →</a>
                 </div>
-                <div class="publication">
-                    <h3>One must imagine Sisyphus happy: Integrative taxonomic characterization of 22 new Ceroptres species</h3>
-                    <p class="publication-meta journal">Zootaxa (2024)</p>
-                    <p class="publication-meta authors">Nastasi, L.F., Smith, C.N., Davis, C.K., Ward, A.K.G., Brown, G., et al.</p>
-                    <a href="https://doi.org/10.11646/zootaxa.5508.1.1" class="doi-link">DOI: 10.11646/zootaxa.5508.1.1</a>
+                <div class="pub-card">
+                    <h3>One must imagine Sisyphus happy: Integrative taxonomic characterization of 22 new <em>Ceroptres</em> species</h3>
+                    <p class="pub-meta journal">Zootaxa (2024)</p>
+                    <p class="pub-meta authors">Nastasi, L.F., Smith, C.N., Davis, C.K., Ward, A.K.G., Brown, G., et al.</p>
+                    <a href="https://doi.org/10.11646/zootaxa.5508.1.1" class="pub-doi">DOI: 10.11646/zootaxa.5508.1.1 →</a>
                 </div>
-                <div class="publication">
+                <div class="pub-card">
                     <h3>Speciation in kleptoparasites of oak gall wasps often correlates with shifts into new tree habitats, tree organs, or gall morphospace</h3>
-                    <p class="publication-meta journal">Evolution (2024)</p>
-                    <p class="publication-meta authors">Ward, A., Zhang, Y.M., Brown, G.E., et al.</p>
-                    <a href="https://doi.org/10.1093/evolut/qpad202" class="doi-link">DOI: 10.1093/evolut/qpad202</a>
+                    <p class="pub-meta journal">Evolution (2024)</p>
+                    <p class="pub-meta authors">Ward, A., Zhang, Y.M., Brown, G.E., et al.</p>
+                    <a href="https://doi.org/10.1093/evolut/qpad202" class="pub-doi">DOI: 10.1093/evolut/qpad202 →</a>
                 </div>
-            </section>
-
-            <!-- Contact -->
-            <section>
-                <h2 style="text-align: center; border-bottom: none;">Get in Touch</h2>
-                <div class="contact-links">
-                    <a href="/cdn-cgi/l/email-protection#5e392b3b2c3730733c2c3129301e2b3731293f703b3a2b" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/guerin-brown-336694229" class="contact-link">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://www.researchgate.net/profile/Guerin-Brown" class="contact-link">
-                        <i class="fab fa-researchgate"></i>
-                        <span>ResearchGate</span>
-                    </a>
-                    <a href="https://orcid.org/0009-0007-4466-5601" class="contact-link">
-                        <i class="fab fa-orcid"></i>
-                        <span>ORCID</span>
-                    </a>
+            </div>
+            <h2 class="section-title" style="margin-top:2.5rem;">Conference Presentations</h2>
+            <div class="pub-list">
+                <div class="pub-card">
+                    <h3>Describing the ecological niche of a genus of oak gall parasites using dissection, micro-CT, and genetic barcoding</h3>
+                    <p class="pub-meta journal">Entomological Society of America Annual Meeting (2024)</p>
+                    <p class="pub-meta authors">Brown, G.E., Forbes, A.A. · Phoenix, AZ</p>
                 </div>
-            </section>
-        </div>
+                <div class="pub-card">
+                    <h3>Evolution of a genus of gall wasp kleptoparasites</h3>
+                    <p class="pub-meta journal">Midwest Ecology and Evolution Conference (2023)</p>
+                    <p class="pub-meta authors">Brown, G.E., Ward, A.K.G., Zhang, Y.M., Forbes, A.A. · Louisville, KY</p>
+                </div>
+            </div>
+        </section>
 
-        <!-- Right column - Blog -->
-        <aside class="sidebar">
-            <section>
-                <h2>Blog</h2>
-                <article class="blog-post">
-                    <h3>New Paper!</h3>
-                    <p class="post-date">July 30, 2025</p>
-                    <p>Just a couple of weeks ago, I published a paper in the Journal of Hymenoptera Research. The focus is on non-native oak gall parasitoid wasps in the genus <em>Bootanomyia</em>. We recorded evidence of these wasps in the Ward et al., 2020 paper in Zoological Studies but didn't have enough data at the time to discern whether there was an unexplored native population or if the wasps were actually introduced.</p>
+        <!-- TEACHING -->
+        <section class="page-section reveal" id="teaching">
+            <div class="section-label"><span class="eyebrow">Teaching</span></div>
+            <h2 class="section-title">Teaching, Outreach, and Instructional Design</h2>
+
+            <div class="teaching-intro">
+                <!-- Left column: first 3 teaching entries -->
+                <div>
+                    <h3 class="sub-title">Teaching Experience</h3>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="exp-year">2023</div>
+                            <div class="exp-body">
+                                <h3>Teaching Assistant — Entomology</h3>
+                                <p>University of Iowa · Prof. Andrew Forbes. Two sections, Fall 2023.</p>
+                            </div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-year">2024, 2026</div>
+                            <div class="exp-body">
+                                <h3>Teaching Assistant — Evolution</h3>
+                                <p>University of Iowa · Prof. John Logsdon. Lead weekly workshops for approx. 20 undergraduates; facilitated active-learning exercises in phylogenetics, population genetics, and natural selection; guest lecturer for coevolution.</p>
+                            </div>
+                        </div>
+                        <div class="exp-item">
+                            <div class="exp-year">Ongoing</div>
+                            <div class="exp-body">
+                                <h3>Instructional Design</h3>
+                                <p>Graduate coursework in evidence-based instructional design, learning objective development, and iterative assessment design.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right column: 4th teaching entry + outreach -->
+                <div>
+                    <h3 class="sub-title">&nbsp;</h3><!-- spacer to align with left heading -->
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="exp-year">2023–Present</div>
+                            <div class="exp-body">
+                                <h3>Undergraduate Research Mentor</h3>
+                                <p>Department of Biology, University of Iowa. Mentoring undergraduates in research design, specimen collection, and data analysis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="sub-title" style="margin-top:1.75rem;">Outreach</h3>
+                    <div class="exp-list">
+                        <div class="exp-item">
+                            <div class="exp-year">Summer 2024</div>
+                            <div class="exp-body">
+                                <h3>Community Outreach — Iowa City, IA</h3>
+                                <p>Parks and Recreation Department. Taught members of the Iowa City community how to identify, collect, and preserve insects.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="margin-top:1rem; font-size:.92rem;">I am also involved in public outreach around native biodiversity and oak gall ecology through the <a href="https://www.inaturalist.org/posts/83434-cynipini-larval-sequencing-project">Cynipini Larval Sequencing Project</a> on iNaturalist.</p>
+                </div>
+            </div>
+
+            <!-- Instructional Design Project -->
+            <h3 class="sub-title" style="font-family:var(--serif); font-size:1.4rem; margin-bottom:1.25rem;">Instructional Design Project</h3>
+
+            <div class="id-card" style="margin-bottom:1.25rem;">
+                <div class="card-label">The Project</div>
+                <h3>Bridging the Gap in Phylogenetics Instruction</h3>
+                <p>As part of my graduate coursework, I revised the instructional design for teaching maximum parsimony in an evolution course at the University of Iowa. Students in evolution courses are expected to construct and interpret phylogenetic trees using DNA sequences, which is a cognitively demanding task complicated by persistent misconceptions and visual confusion. For this project, I identified the root causes of student difficulty and developed in-class activities, accompanying lecture material, instructor guides, and a restructured homework assignment to progressively scaffold student skill-building for maximum parsimony phylogenetic inference.</p>
+            </div>
+
+            <div class="id-grid">
+                <div class="id-card">
+                    <div class="card-label">Setting — Analysis</div>
+                    <h3>Course and Learner Context</h3>
+                    <p>The learners for this project were 49 undergraduate students across three workshop sections. Of the learners, 21.6% were third-year students and 78.4% were fourth-year students. 56.9% were pursuing a B.A. and 43.1% were pursuing a B.S. Additionally, most students had aspirations directly related to medicine or human biology. Together, these demographics suggest low intrinsic motivation for evolutionary biology, implying that effective instruction needed to make the topic personally relevant to foster engagement, rather than redesigning the content alone.</p>
+                </div>
+                <div class="id-card">
+                    <div class="card-label">Product — Design</div>
+                    <h3>Systematic Design</h3>
+                    <p>The scaffolded workshop sequence used a productive failure framework while incorporating experiential learning and cognitive load theory. This was accompanied by a restructured homework assignment designed to function as an independent but connected learning event. Together, the workshop and homework were designed to gradually transition students toward completing complex, interconnected phylogenetic problems on their own.</p>
+                </div>
+            </div>
+
+            <div class="id-card">
+                <div class="card-label">Results</div>
+                <h3>Findings and Takeaways</h3>
+                <p>The workshop redesign was associated with improved student preparedness, understanding of learning objectives, and assignment clarity. Survey and interview data indicate that students felt comfortable attempting independent problems on the homework after receiving instruction. Importantly, the redesign maintained an appropriate level of challenge. Students described the assignment as a "fun and engaging challenge" that felt like a "natural escalation."</p>
+            </div>
+        </section>
+
+        <!-- BLOG -->
+        <section class="page-section reveal" id="blog">
+            <div class="section-label"><span class="eyebrow">Blog</span></div>
+            <h2 class="section-title">News and Updates</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
                     <img src="images/bootanomyia-pic.jpg" alt="Bootanomyia sp.">
-                    <p>Well, last summer a few more appeared in our rearing cups but from the other side of the continent from our previous findings. That led us to ask a few questions: Are these non-native? Where is their ancestral population from? Does it really matter if it is a non-native parasitoid? We address all of these questions in the paper.</p>
-                    <p><a href="https://doi.org/10.3897/jhr.98.152867">Read the full paper →</a></p>
+                    <div class="blog-card-body">
+                        <p class="blog-date">July 30, 2025</p>
+                        <h3>New Paper in <em>Journal of Hymenoptera Research</em></h3>
+                        <p>We published on two non-native <em>Bootanomyia</em> parasitoid wasps introduced to North America — tracing their origins and asking whether non-native parasitoids matter ecologically.</p>
+                        <a href="https://doi.org/10.3897/jhr.98.152867" class="read-more">Read the paper <i class="fas fa-arrow-right" style="font-size:.7rem;"></i></a>
+                    </div>
                 </article>
+                <article class="blog-card">
+                    <img src="images/micro-CT.png" alt="Micro CT scan of gall">
+                    <div class="blog-card-body">
+                        <p class="blog-date">November 7, 2024</p>
+                        <h3>Presenting at Entomology 2024, Phoenix AZ</h3>
+                        <p>I presented new genetic and micro-CT evidence for reconsidering the ecological niche of <em>Euceroptres</em> parasites (Hymenoptera: Figitidae) in oak galls.</p>
+                        <p style="font-size:.85rem; color:var(--ink-light); margin-top:.25rem;">Monday Nov. 11 · 8:40 AM · Room 222B, PCC</p>
+                    </div>
+                </article>
+            </div>
+        </section>
 
-                <article class="blog-post">
-                    <h3>Entomology 2024!</h3>
-                    <p class="post-date">November 7, 2024</p>
-                    <p>I will be at Entomology 2024 in Phoenix, AZ! I'll be presenting on some work with <em>Euceroptres</em> parasites (Hymenoptera: Figitidae) in oak galls. We have genetic and micro-CT evidence to support reconsidering their ecological niche.</p>
-                    <img src="images/micro-CT.png" alt="Micro CT scan">
-                    <p>The talk is Monday November 11th at 8:40am in 222B, PCC.</p>
-                </article>
-            </section>
-        </aside>
     </main>
 
-    <!-- Affiliations -->
-    <div class="affiliations-footer">
-        <h2>Affiliations</h2>
-        <div class="affiliations-grid">
-            <a href="https://www.gallformers.org/">
-                <img src="images/gallformers-logo.png" alt="Gallformers">
-            </a>
-            <a href="https://www.inaturalist.org/">
-                <img src="images/inat-logo.png" alt="iNaturalist">
-            </a>
-            <a href="https://forbes.lab.uiowa.edu/">
-                <img src="images/lab_logo_noBG_black.svg" alt="Forbes Lab">
-            </a>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-contact">
+                <h4>Get in Touch</h4>
+                <div class="contact-links">
+                    <a href="/cdn-cgi/l/email-protection#5e392b3b2c3730733c2c3129301e2b3731293f703b3a2b" class="contact-link"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://www.linkedin.com/in/guerin-brown-336694229" class="contact-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://www.researchgate.net/profile/Guerin-Brown" class="contact-link"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                    <a href="https://orcid.org/0009-0007-4466-5601" class="contact-link"><i class="fab fa-orcid"></i> ORCID</a>
+                </div>
+            </div>
+            <div class="footer-affiliations">
+                <h4>Affiliations</h4>
+                <div class="aff-logos">
+                    <a href="https://www.gallformers.org/"><img src="images/gallformers-logo.png" alt="Gallformers"></a>
+                    <a href="https://forbes.lab.uiowa.edu/"><img class="aff-logo-large" src="images/lab_logo_noBG_black.svg" alt="Forbes Lab"></a>
+                    <a href="https://www.inaturalist.org/"><img src="images/inat-logo.png" alt="iNaturalist"></a>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-name">Guerin Brown</p>
+                <p>PhD Candidate · University of Iowa</p>
+                <a href="Brown_CV_2026.docx" download class="cv-download">
+                    <i class="fas fa-file-alt"></i> Download CV
+                </a>
+                <p style="margin-top:.75rem;">Background Photo by <a href="https://joshuapaluh.com" target="_blank" rel="noopener">Joshua Paluh</a></p>
+            </div>
         </div>
-    </div>
-
-    <!-- Photo credit -->
-    <footer class="photo-credit">
-        Background photo by <a href="https://joshuapaluh.com" target="_blank" rel="noopener">Joshua Paluh</a>
+        <div class="footer-bottom">&copy; 2025 Guerin Brown · guerinbrown.com</div>
     </footer>
+
+    <script>
+        const nav = document.getElementById('site-nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        const activeObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(a => a.classList.remove('active'));
+                    const link = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-70px 0px -60% 0px' });
+
+        sections.forEach(s => activeObserver.observe(s));
+
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -80px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    </script>
 </body>
 </html>
